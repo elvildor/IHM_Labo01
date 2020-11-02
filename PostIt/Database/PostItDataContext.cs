@@ -54,6 +54,7 @@ namespace PostIt.Database
                 };
                 var dbCategory = context.Categories.Include(c => c.PostIts).First(c => c.Id == category.Id);
                 dbCategory.PostIts.Add(postIt);
+                category.PostIts.Add(postIt);
                 context.SaveChanges();
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace PostIt.Model
@@ -10,6 +11,7 @@ namespace PostIt.Model
 
         public string Title { get; set; }
 
-        public List<PostIt> PostIts { get; set; }
+        public ObservableCollection<PostIt> PostIts { get; set; }
+
     }
 }

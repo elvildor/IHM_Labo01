@@ -27,6 +27,26 @@ namespace PostIt
         {
             PostItContext.Migrate();
             Categories = PostItContext.GetCategories();
+            
+            if (Categories.Count() <= 0)
+            {
+
+                PostItContext.AddCategories(new Category()
+                {
+                    Title = "Hebdomadaire"
+                });
+
+                PostItContext.AddCategories(new Category()
+                {
+                    Title = "Quotidien"
+                });
+
+                PostItContext.AddCategories(new Category()
+                {
+                    Title = "Mensuel"
+                });
+            }
+            Categories = PostItContext.GetCategories();
         }
 
         protected void InitializeView()
