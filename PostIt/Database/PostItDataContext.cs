@@ -38,6 +38,15 @@ namespace PostIt.Database
             return ((IDesignTimeDbContextFactory<PostItContext>)Activator.CreateInstance(_contextType)).CreateDbContext(new[] { "" });
         }
 
+        public static void UpdatePostIt(Model.PostIt postIt)
+        {
+            using (PostItContext context = CreateContext())
+            {
+                context.PostIts.Update(postIt);
+                context.SaveChanges();
+            }
+        }
+
         public static void Migrate()
         {
             using(PostItContext context = CreateContext())

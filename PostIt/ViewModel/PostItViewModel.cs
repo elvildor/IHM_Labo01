@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using PostIt.Database;
 using PostIt.Model;
 using PostIt.Utils;
 
@@ -24,8 +25,13 @@ namespace PostIt.ViewModel
             {
                 Model.Text = value;
                 OnPropertyChanged();
+                UpdatePostIt();
             }
         }
 
+        private void UpdatePostIt()
+        {
+            PostItContext.UpdatePostIt(Model);
+        }
     }
 }
