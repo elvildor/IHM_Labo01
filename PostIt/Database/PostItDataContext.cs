@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using PostIt.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -36,6 +37,25 @@ namespace PostIt.Database
                 _contextType = contextType;
             }
             return ((IDesignTimeDbContextFactory<PostItContext>)Activator.CreateInstance(_contextType)).CreateDbContext(new[] { "" });
+        }
+
+        public static void CreatePostIt(string text, Category category, Color color)
+        {
+            if (category == null)
+                throw new Exception("Please add a category");
+            using (PostItContext context = CreateContext())
+            {
+                Model.PostIt postIt = new Model.PostIt()
+                {
+                    Text = text,
+                    Category = category,
+                    CategoryId = category.Id,
+                    ColorArgb = color.ToArgb()
+                };
+                var dbCategory = context.Categories.Include(c => c.PostIts).First(c => c.Id == category.Id);
+                dbCategory.PostIts.Add(postIt);
+                context.SaveChanges();
+            }
         }
 
         public static void UpdatePostIt(Model.PostIt postIt)

@@ -1,6 +1,7 @@
 ﻿using PostIt.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PostIt.ViewModel
@@ -13,10 +14,12 @@ namespace PostIt.ViewModel
             {
                 Categories.Add(new CategoryViewModel(category));
             }
+
+            Commands = new CommandsViewModel(categories.FirstOrDefault());
         }
 
         public List<BaseViewModel> Categories { get; protected set; } = new List<BaseViewModel>();
 
-        public BaseViewModel Commands { get; protected set; } = new CommandsViewModel();
+        public BaseViewModel Commands { get; protected set; }
     }
 }

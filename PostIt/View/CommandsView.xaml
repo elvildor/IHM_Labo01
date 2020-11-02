@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:conv="clr-namespace:PostIt.View.Converter"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="50">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <SolidColorBrush x:Key="Red" Color="Red"/>
+        <SolidColorBrush x:Key="Blue" Color="Blue"/>
+        <SolidColorBrush x:Key="Green" Color="Green"/>
+        <SolidColorBrush x:Key="Yellow" Color="Yellow"/>
     </UserControl.Resources>
 
     <Grid MaxWidth="100">
@@ -25,14 +28,59 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Margin" Value="0,4,0,0"/>
                     <Setter Property="MinHeight" Value="10"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse Fill="{TemplateBinding Background}"/>
+                                    <Ellipse>
+                                        <Ellipse.Fill>
+                                            <RadialGradientBrush>
+                                                <GradientStop Offset="0" Color="#00000000"/>
+                                                <GradientStop Offset="0.88" Color="#00000000"/>
+                                                <GradientStop Offset="1" Color="#80000000"/>
+                                            </RadialGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse Margin="10" x:Name="highlightCircle" >
+                                        <Ellipse.Fill >
+                                            <LinearGradientBrush >
+                                                <GradientStop Offset="0" Color="#50FFFFFF"/>
+                                                <GradientStop Offset="0.5" Color="#00FFFFFF"/>
+                                                <GradientStop Offset="1" Color="#50FFFFFF"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="highlightCircle" Property="Fill">
+                                            <Setter.Value>
+                                                <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.7,1">
+                                                    <GradientStop Offset="0" Color="#50FFFFFF"/>
+                                                    <GradientStop Offset="0.5" Color="#00FFFFFF"/>
+                                                    <GradientStop Offset="1" Color="#50FFFFFF"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter TargetName="content" Property="RenderTransform">
+                                            <Setter.Value>
+                                                <TranslateTransform Y="0.5" X="0.5"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </StackPanel.Resources>
-
-            <Button Background="Red" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-            <Button Background="Yellow" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-            <Button Background="Green" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-            <Button Background="Blue" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-            <Button>+</Button>
+            <Button Background="Red" Command="{Binding AddButton}" CommandParameter="{StaticResource Red}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="Yellow" Command="{Binding AddButton}" CommandParameter="{StaticResource Yellow}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="Green" Command="{Binding AddButton}" CommandParameter="{StaticResource Green}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="Blue" Command="{Binding AddButton}" CommandParameter="{StaticResource Blue}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="White" >+</Button>
         </StackPanel>
     </Grid>
 </UserControl>
