@@ -3,34 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:PostIt.View"
+             xmlns:conv="clr-namespace:PostIt.View.Converter"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="50">
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
 
-    <StackPanel MaxWidth="100">
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseEnter">
-                <i:InvokeCommandAction Command="{Binding MouseEnter}"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseLeave">
-                <i:InvokeCommandAction Command="{Binding MouseLeave}"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-        <StackPanel.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="Margin" Value="0,4,0,0"/>
-                <Setter Property="MinHeight" Value="10"/>
-            </Style>
-        </StackPanel.Resources>
+    <Grid MaxWidth="100">
+        <StackPanel Background="Transparent">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <i:InvokeCommandAction Command="{Binding MouseEnter}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave">
+                    <i:InvokeCommandAction Command="{Binding MouseLeave}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0,4,0,0"/>
+                    <Setter Property="MinHeight" Value="10"/>
+                </Style>
+            </StackPanel.Resources>
 
-        <Button Background="Red" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-        <Button Background="Yellow" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-        <Button Background="Green" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-        <Button Background="Blue" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-        <Button>+</Button>
-    </StackPanel>
+            <Button Background="Red" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="Yellow" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="Green" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button Background="Blue" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+            <Button>+</Button>
+        </StackPanel>
+    </Grid>
 </UserControl>
