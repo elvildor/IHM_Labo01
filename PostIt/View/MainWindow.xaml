@@ -9,7 +9,31 @@
         MinHeight="900" MinWidth="850">
     <Grid>
         <StackPanel Margin="12">
-            <ItemsControl ItemsSource="{Binding Categories}" />
+            <ListBox ItemsSource="{Binding Categories}" AlternationCount="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex"
+                            Value="0">
+                                <Setter Property="Background" Value="CornflowerBlue" />
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex"
+                            Value="1">
+                                <Setter Property="Background" Value="LightBlue" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
         </StackPanel>
         <ContentPresenter Content="{Binding Commands}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
     </Grid>

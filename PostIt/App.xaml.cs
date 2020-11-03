@@ -33,12 +33,12 @@ namespace PostIt
 
                 PostItContext.AddCategories(new Category()
                 {
-                    Title = "Hebdomadaire"
+                    Title = "Quotidien"
                 });
 
                 PostItContext.AddCategories(new Category()
                 {
-                    Title = "Quotidien"
+                    Title = "Hebdromadaire"
                 });
 
                 PostItContext.AddCategories(new Category()

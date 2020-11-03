@@ -64,12 +64,15 @@ namespace PostIt.ViewModel
         public ICommand MouseDoubleClick => _mouseDoubleClick ??= new CommandHandler(MouseDoubleClickAction, true);
         private void MouseDoubleClickAction(object parameter)
         {
-            IsNotEditable = false;
-            ElementAreFocused?.Invoke(this, EventArgs.Empty);
-            if (parameter is TextBox textBox)
+            if (MessageBox.Show("Êtes-vous sûr ?", "Ssuppression", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                textBox.Focus();
-                textBox.Select(textBox.Text.Length, 0);
+                IsNotEditable = false;
+                ElementAreFocused?.Invoke(this, EventArgs.Empty);
+                if (parameter is TextBox textBox)
+                {
+                    textBox.Focus();
+                    textBox.Select(textBox.Text.Length, 0);
+                }
             }
         }
 
