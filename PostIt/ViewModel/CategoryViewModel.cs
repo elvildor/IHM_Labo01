@@ -1,4 +1,6 @@
-﻿using PostIt.Model;
+﻿using PostIt.Database;
+using PostIt.Model;
+using PostIt.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,6 +43,11 @@ namespace PostIt.ViewModel
                     break;
             }
             OnPropertyChanged();
+        }
+
+        internal void Drop(PostItViewModel postItViewModel)
+        {
+            PostItContext.ChangePostItCategory(postItViewModel.Model, Category);
         }
 
         public Category Category { get; protected set; }

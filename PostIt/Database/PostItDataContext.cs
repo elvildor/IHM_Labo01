@@ -54,6 +54,21 @@ namespace PostIt.Database
                 };
                 var dbCategory = context.Categories.Include(c => c.PostIts).First(c => c.Id == category.Id);
                 dbCategory.PostIts.Add(postIt);
+                context.SaveChanges();
+                category.PostIts.Add(postIt);
+            }
+        }
+
+        public static void ChangePostItCategory(Model.PostIt model, Category category)
+        {
+            using (PostItContext context = CreateContext())
+            {
+                var postIt = context.PostIts.FirstOrDefault(p => p.Id == model.Id);
+                model.Category.PostIts.RemoveAt(model.Category.PostIts.IndexOf(model));
+                var newCategory = context.Categories.FirstOrDefault(c => c.Id == category.Id);
+                postIt.Category = newCategory;
+                postIt.CategoryId = newCategory.Id;
+                context.PostIts.Update(postIt);
                 category.PostIts.Add(postIt);
                 context.SaveChanges();
             }
