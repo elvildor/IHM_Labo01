@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:v="clr-namespace:PostIt.View"
         mc:Ignorable="d"
-        Title="Post-It" Height="450" Width="800">
+        Title="Post-It" 
+        MinHeight="900" MinWidth="850">
     <Grid>
         <StackPanel Margin="12">
             <ItemsControl ItemsSource="{Binding Categories}" />
