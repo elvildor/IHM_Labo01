@@ -39,12 +39,15 @@ namespace PostIt.View
 
         private void ItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is PostItView postItView)
+            if (sender is PostItView postItView 
+                && postItView.DataContext is PostItViewModel pivm 
+                && pivm.IsNotEditable)
             {
                 DragDrop.DoDragDrop(sender as Control,
                     postItView,
                     DragDropEffects.Move);
             }
+
         }
     }
 }

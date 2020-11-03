@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace PostIt.Database
@@ -55,6 +56,7 @@ namespace PostIt.Database
                 var dbCategory = context.Categories.Include(c => c.PostIts).First(c => c.Id == category.Id);
                 dbCategory.PostIts.Add(postIt);
                 context.SaveChanges();
+                postIt.Category = category;
                 category.PostIts.Add(postIt);
             }
         }
@@ -64,12 +66,17 @@ namespace PostIt.Database
             using (PostItContext context = CreateContext())
             {
                 var postIt = context.PostIts.FirstOrDefault(p => p.Id == model.Id);
-                model.Category.PostIts.RemoveAt(model.Category.PostIts.IndexOf(model));
+                
+                int indexPostit = model.Category.PostIts.IndexOf(model);
+                model.Category.PostIts.RemoveAt(indexPostit);
+                
                 var newCategory = context.Categories.FirstOrDefault(c => c.Id == category.Id);
-                postIt.Category = newCategory;
-                postIt.CategoryId = newCategory.Id;
+                model.Category = category;
+                model.CategoryId = category.Id;
+                postIt.Category = category;
+                postIt.CategoryId = category.Id;
                 context.PostIts.Update(postIt);
-                category.PostIts.Add(postIt);
+                category.PostIts.Add(model);
                 context.SaveChanges();
             }
         }

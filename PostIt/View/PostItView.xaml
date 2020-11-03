@@ -7,14 +7,23 @@
              xmlns:conv="clr-namespace:PostIt.View.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Padding="20">
+             Width="200" Height="200"
+             Padding="20"
+             FontSize="24">
     <UserControl.Resources>
         <conv:ColorToBrushConverter x:Key="ColorToBrush"/>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
     <Grid>
-        <Grid Background="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}" Width="200" Height="200">
-            <TextBox x:Name="Editor" Text="{Binding Text, Mode=TwoWay}" Background="Transparent" Visibility="{Binding IsEditable, Converter={StaticResource BoolToVis}}">
+        <Grid Background="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}">
+            <TextBox x:Name="Editor"
+                     Text="{Binding Text, Mode=TwoWay}"
+                     Background="Transparent"
+                     Visibility="{Binding IsEditable, Converter={StaticResource BoolToVis}}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="LostFocus">
                         <i:InvokeCommandAction Command="{Binding LoseFocus}" />
@@ -29,7 +38,14 @@
                 </i:Interaction.Triggers>
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <TextBlock Text="{Binding Text}"/>
+                        <Grid Background="Transparent"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                            <TextBlock Text="{Binding Text}"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
                     </ControlTemplate>
                 </Button.Template>
             </Button>
