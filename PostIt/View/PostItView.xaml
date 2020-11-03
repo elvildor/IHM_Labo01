@@ -16,6 +16,12 @@
     </UserControl.Resources>
     <Grid>
         <Grid Background="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}">
+
+            <Grid.Resources>
+                <Style TargetType="{x:Type Grid}">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ItemPreviewMouseLeftButtonDown" />
+                </Style>
+            </Grid.Resources>
             <TextBox x:Name="Editor"
                      Text="{Binding Text, Mode=TwoWay}"
                      Background="Transparent"
@@ -50,5 +56,25 @@
                 </Button.Template>
             </Button>
         </Grid>
+            <Button Height="30" 
+                    Width="30" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    FontSize="24"
+                    Padding="0"
+                    BorderThickness="0"
+                    Command="{Binding ClickDelete}"
+                    CommandParameter="{Binding Model}">
+            <TextBlock Text="x" Margin="0,-4,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect
+                        ShadowDepth="1"
+                        Direction="330"/>
+                </TextBlock.Effect>
+            </TextBlock>
+        </Button>
     </Grid>
 </UserControl>

@@ -9,20 +9,28 @@
              d:DesignHeight="450" d:DesignWidth="800"
              MinHeight="100"
              AllowDrop="True">
+
     <GroupBox Header="{Binding Category.Title}">
+        <GroupBox.Style>
+            <Style TargetType="GroupBox">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Path=(ItemsControl.AlternationIndex)}" Value="0">
+                        <Setter Property="Background" Value="Pink"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Path=(ItemsControl.AlternationIndex)}" Value="1">
+                        <Setter Property="Background" Value="LightBlue"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </GroupBox.Style>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" 
                       VerticalScrollBarVisibility="Disabled"
                       AllowDrop="True"
                       Drop="ItemDrop">
             <ItemsControl ItemsSource="{Binding PostIts}">
-                <ItemsControl.Resources>
-                    <Style TargetType="{x:Type local:PostItView}">
-                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ItemPreviewMouseLeftButtonDown" />
-                    </Style>
-                </ItemsControl.Resources>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Rows="1" />
+                        <UniformGrid Rows="1"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>

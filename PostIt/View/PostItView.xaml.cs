@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PostIt.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,19 @@ namespace PostIt.View
         public PostItView()
         {
             InitializeComponent();
+        }
+
+        private void ItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is PostItViewModel pivm
+                && pivm.IsNotEditable)
+            {
+                DragDrop.DoDragDrop(this,
+                    this,
+                    DragDropEffects.Move);
+                e.Handled = false;
+            }
+
         }
     }
 }

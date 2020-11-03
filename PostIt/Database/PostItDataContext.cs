@@ -81,6 +81,16 @@ namespace PostIt.Database
             }
         }
 
+        public static void DeletePostIt(Model.PostIt postIt)
+        {
+            using (PostItContext context = CreateContext())
+            {
+                postIt.Category.PostIts.Remove(postIt);
+                context.PostIts.Remove(postIt);
+                context.SaveChanges();
+            }
+        }
+
         public static void UpdatePostIt(Model.PostIt postIt)
         {
             using (PostItContext context = CreateContext())

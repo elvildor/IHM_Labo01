@@ -64,15 +64,12 @@ namespace PostIt.ViewModel
         public ICommand MouseDoubleClick => _mouseDoubleClick ??= new CommandHandler(MouseDoubleClickAction, true);
         private void MouseDoubleClickAction(object parameter)
         {
-            if (MessageBox.Show("Êtes-vous sûr ?", "Ssuppression", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            IsNotEditable = false;
+            ElementAreFocused?.Invoke(this, EventArgs.Empty);
+            if (parameter is TextBox textBox)
             {
-                IsNotEditable = false;
-                ElementAreFocused?.Invoke(this, EventArgs.Empty);
-                if (parameter is TextBox textBox)
-                {
-                    textBox.Focus();
-                    textBox.Select(textBox.Text.Length, 0);
-                }
+                textBox.Focus();
+                textBox.Select(textBox.Text.Length, 0);
             }
         }
 
@@ -82,6 +79,20 @@ namespace PostIt.ViewModel
         private void LoseFocusAction(object parameter)
         {
             IsNotEditable = true;
+        }
+
+
+        private ICommand _clickDelete;
+        public ICommand ClickDelete => _clickDelete ??= new CommandHandler(ClickDeleteAction, true);
+        private void ClickDeleteAction(object parameter)
+        {
+            if (parameter is Model.PostIt postIt)
+            {
+                if (MessageBox.Show("Êtes-vous sûr ?", "Suppression", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    PostItContext.DeletePostIt(postIt);
+                }
+            }
         }
     }
 }

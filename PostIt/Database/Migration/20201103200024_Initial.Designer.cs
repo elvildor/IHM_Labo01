@@ -8,7 +8,7 @@ using PostIt.Database;
 namespace PostIt.Database.Migration
 {
     [DbContext(typeof(PostItContext))]
-    [Migration("20201102181634_Initial")]
+    [Migration("20201103200024_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
