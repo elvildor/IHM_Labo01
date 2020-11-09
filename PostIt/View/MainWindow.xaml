@@ -6,13 +6,14 @@
         xmlns:v="clr-namespace:PostIt.View"
         mc:Ignorable="d"
         Title="Post-It" 
-        MinHeight="900" MinWidth="850">
+        MinHeight="900" MinWidth="700">
     <Grid>
         <StackPanel Margin="12">
             <ListView ItemsSource="{Binding Categories}"
                       AlternationCount="2"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      HorizontalContentAlignment="Stretch">
+                      HorizontalContentAlignment="Stretch"
+                      BorderThickness="0">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Background" Value="Transparent" />

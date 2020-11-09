@@ -15,13 +15,25 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </UserControl.Resources>
     <Grid>
-        <Grid Background="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}">
+        <Grid Background="Transparent">
 
             <Grid.Resources>
                 <Style TargetType="{x:Type Grid}">
                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ItemPreviewMouseLeftButtonDown" />
                 </Style>
             </Grid.Resources>
+            <Grid.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="315" ShadowDepth="1"/>
+            </Grid.BitmapEffect>
+            <!--<Border Background="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}"
+                    BorderBrush="Black" 
+                    BorderThickness="3" 
+                    CornerRadius="0,0,20,0" 
+                    >
+                <Border.BitmapEffect>
+                    <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="315" ShadowDepth="1"/>
+                </Border.BitmapEffect>
+            </Border>-->
             <TextBox x:Name="Editor"
                      Text="{Binding Text, Mode=TwoWay}"
                      Background="Transparent"
@@ -36,6 +48,8 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
+            <Polygon Points="0,0 160,0 160,136 136,160 0,160" Stroke="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}" Fill="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Polygon Points="0,0 20,0 0,20" Stroke="LightSlateGray" Fill="LightSlateGray" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             <Button Visibility="{Binding IsNotEditable, Converter={StaticResource BoolToVis}}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
@@ -55,6 +69,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+
         </Grid>
             <Button Height="30" 
                     Width="30" 

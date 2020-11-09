@@ -8,7 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              MinHeight="100"
-             AllowDrop="True">
+             AllowDrop="True"
+             Padding="0,0,0,5"
+             FontSize="20"
+             FontWeight="DemiBold">
 
     <GroupBox Header="{Binding Category.Title}">
         <GroupBox.Style>
