@@ -30,9 +30,9 @@ namespace PostIt.ViewModel
             }
         }
 
-        private ICommand _mouseEnter;
-        public ICommand MouseEnter => _mouseEnter ??= new CommandHandler(MouseEnterAction, true);
-        private void MouseEnterAction(object parameter)
+        private ICommand _mouseClick;
+        public ICommand MouseClick => _mouseClick ??= new CommandHandler(MouseClickAction, true);
+        private void MouseClickAction(object parameter)
         {
             ButtonVisibility = true;
         }

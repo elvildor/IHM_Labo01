@@ -88,8 +88,8 @@
                     </StackPanel>
                     <Button Background="Transparent" Height="60" Width="60" FontSize="42">
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <i:InvokeCommandAction Command="{Binding MouseEnter}" />
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding MouseClick}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <TextBlock Text="+" Margin="0,-8,0,0" FontWeight="Bold"/>
