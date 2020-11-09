@@ -18,10 +18,10 @@
             <Style TargetType="GroupBox">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Path=(ItemsControl.AlternationIndex)}" Value="0">
-                        <Setter Property="Background" Value="Pink"/>
+                        <Setter Property="Background" Value="Beige"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}, Path=(ItemsControl.AlternationIndex)}" Value="1">
-                        <Setter Property="Background" Value="LightBlue"/>
+                        <Setter Property="Background" Value="WhiteSmoke"/>
                     </DataTrigger>
                 </Style.Triggers>
             </Style>

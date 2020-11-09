@@ -7,6 +7,9 @@ using System.Windows.Input;
 using PostIt.Database;
 using PostIt.Model;
 using PostIt.Utils;
+using PostIt.View.Converter;
+using ColorBrush = System.Windows.Media.SolidColorBrush;
+using MediaColor = System.Windows.Media.Color;
 
 namespace PostIt.ViewModel
 {
@@ -30,6 +33,17 @@ namespace PostIt.ViewModel
 
         public Model.PostIt Model { get; protected set; }
 
+        public MediaColor LightenColorBrush
+        {
+            get => MediaColor.FromArgb(Model.Color.A, Model.Color.R, Model.Color.G, Model.Color.B);
+        }
+
+        public MediaColor DarkenColorBrush
+        {
+            get => new HslColor(
+                    MediaColor.FromArgb(Model.Color.A, Model.Color.R, Model.Color.G, Model.Color.B))
+                    .Lighten(0.8).ToRgb();
+        }
         public string Text
         {
             get => Model.Text;

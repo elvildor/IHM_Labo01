@@ -48,8 +48,26 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
-            <Polygon Points="0,0 160,0 160,136 136,160 0,160" Stroke="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}" Fill="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Polygon Points="0,0 20,0 0,20" Stroke="LightSlateGray" Fill="LightSlateGray" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            <Polygon Points="0,0 160,0 160,140 140,160 0,160" 
+                     Stroke="{Binding Path=LightenColorBrush, Converter={StaticResource ColorToBrush}}" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Polygon.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="0,1">
+                        <GradientStop Color="{Binding Path=LightenColorBrush}" Offset="0.0"/>
+
+                        <GradientStop Color="{Binding Path=DarkenColorBrush}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Polygon.Fill>
+            </Polygon>
+            <Polygon Points="0,0 20,0 0,20"  HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Polygon.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{Binding Path=LightenColorBrush}" Offset="0.0"/>
+
+                        <GradientStop Color="{Binding Path=DarkenColorBrush}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Polygon.Fill>
+            </Polygon>
             <Button Visibility="{Binding IsNotEditable, Converter={StaticResource BoolToVis}}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">

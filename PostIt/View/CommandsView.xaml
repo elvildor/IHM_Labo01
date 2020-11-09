@@ -8,10 +8,10 @@
              d:DesignHeight="100" d:DesignWidth="50">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
-        <SolidColorBrush x:Key="Red" Color="Red"/>
-        <SolidColorBrush x:Key="Blue" Color="Blue"/>
-        <SolidColorBrush x:Key="Green" Color="Green"/>
-        <SolidColorBrush x:Key="Yellow" Color="Yellow"/>
+        <SolidColorBrush x:Key="Red" Color="#FF0000"/>
+        <SolidColorBrush x:Key="Blue" Color="#0094FF"/>
+        <SolidColorBrush x:Key="Green" Color="#14FF00"/>
+        <SolidColorBrush x:Key="Yellow" Color="#FFE600"/>
     </UserControl.Resources>
 
     <Grid>
@@ -40,28 +40,10 @@
                                             </RadialGradientBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                                    <Ellipse Margin="10" x:Name="highlightCircle" >
-                                        <Ellipse.Fill >
-                                            <LinearGradientBrush >
-                                                <GradientStop Offset="0" Color="#50FFFFFF"/>
-                                                <GradientStop Offset="0.5" Color="#00FFFFFF"/>
-                                                <GradientStop Offset="1" Color="#50FFFFFF"/>
-                                            </LinearGradientBrush>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
                                     <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsPressed" Value="True">
-                                        <Setter TargetName="highlightCircle" Property="Fill">
-                                            <Setter.Value>
-                                                <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.7,1">
-                                                    <GradientStop Offset="0" Color="#50FFFFFF"/>
-                                                    <GradientStop Offset="0.5" Color="#00FFFFFF"/>
-                                                    <GradientStop Offset="1" Color="#50FFFFFF"/>
-                                                </LinearGradientBrush>
-                                            </Setter.Value>
-                                        </Setter>
                                         <Setter TargetName="content" Property="RenderTransform">
                                             <Setter.Value>
                                                 <TranslateTransform Y="0.5" X="0.5"/>
@@ -77,14 +59,14 @@
 
             <StackPanel Background="Transparent" Orientation="Horizontal">
                 <StackPanel Background="Transparent" Orientation="Vertical" Width="60" VerticalAlignment="Bottom">
-                    <Button Background="Red" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Red}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-                    <Button Background="Yellow" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Yellow}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                    <Button Background="#FF0000" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Red}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                    <Button Background="#FFE600" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Yellow}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
                 </StackPanel>
 
                 <StackPanel Background="Transparent" Orientation="Vertical" MinWidth="70" MinHeight="70">
                     <StackPanel Background="Transparent" Orientation="Horizontal" Height="60" >
-                        <Button Background="Green" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Green}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-                        <Button Background="Blue" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Blue}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                        <Button Background="#14FF00" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Green}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                        <Button Background="#0094FF" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Blue}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
                     </StackPanel>
                     <Button Background="Transparent" Height="60" Width="60" FontSize="42">
                         <i:Interaction.Triggers>
