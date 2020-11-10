@@ -25,16 +25,7 @@
             <Grid.BitmapEffect>
                 <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="315" ShadowDepth="1"/>
             </Grid.BitmapEffect>
-            <!--<Border Background="{Binding Path=Model.Color, Converter={StaticResource ColorToBrush}}"
-                    BorderBrush="Black" 
-                    BorderThickness="3" 
-                    CornerRadius="0,0,20,0" 
-                    >
-                <Border.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="315" ShadowDepth="1"/>
-                </Border.BitmapEffect>
-            </Border>-->
-            
+
             <Polygon Points="0,0 160,0 160,140 140,160 0,160" 
                      Stroke="{Binding Path=LightenColorBrush, Converter={StaticResource ColorToBrush}}" 
                      HorizontalAlignment="Left" VerticalAlignment="Top">
