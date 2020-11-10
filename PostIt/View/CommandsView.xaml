@@ -8,10 +8,10 @@
              d:DesignHeight="100" d:DesignWidth="50">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
-        <SolidColorBrush x:Key="Red" Color="#FF0000"/>
+        <SolidColorBrush x:Key="Red" Color="#FF5733"/>
         <SolidColorBrush x:Key="Blue" Color="#0094FF"/>
-        <SolidColorBrush x:Key="Green" Color="#14FF00"/>
-        <SolidColorBrush x:Key="Yellow" Color="#FFE600"/>
+        <SolidColorBrush x:Key="Green" Color="#85F064"/>
+        <SolidColorBrush x:Key="Yellow" Color="#FFE500"/>
     </UserControl.Resources>
 
     <Grid>
@@ -59,13 +59,13 @@
 
             <StackPanel Background="Transparent" Orientation="Horizontal">
                 <StackPanel Background="Transparent" Orientation="Vertical" Width="60" VerticalAlignment="Bottom">
-                    <Button Background="#FF0000" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Red}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-                    <Button Background="#FFE600" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Yellow}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                    <Button Background="#FF5733" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Red}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                    <Button Background="#FFE500" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Yellow}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
                 </StackPanel>
 
                 <StackPanel Background="Transparent" Orientation="Vertical" MinWidth="70" MinHeight="70">
                     <StackPanel Background="Transparent" Orientation="Horizontal" Height="60" >
-                        <Button Background="#14FF00" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Green}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                        <Button Background="#85F064" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Green}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
                         <Button Background="#0094FF" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Blue}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
                     </StackPanel>
                     <Button Background="Transparent" Height="60" Width="60" FontSize="42">
