@@ -33,17 +33,17 @@ namespace PostIt
 
                 PostItContext.AddCategories(new Category()
                 {
-                    Title = "Quotidien"
+                    Title = "Aujourd'hui"
                 });
 
                 PostItContext.AddCategories(new Category()
                 {
-                    Title = "Hebdromadaire"
+                    Title = "Cette semaine"
                 });
 
                 PostItContext.AddCategories(new Category()
                 {
-                    Title = "Mensuel"
+                    Title = "Ce mois"
                 });
             }
             Categories = PostItContext.GetCategories();

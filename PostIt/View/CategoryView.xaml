@@ -262,7 +262,9 @@
         </Style>
     </UserControl.Resources>
     <GroupBox Header="{Binding Category.Title}" 
-              BorderThickness="0,1,0,0">
+              BorderThickness="0,1,0,0"
+              AllowDrop="True"
+              Drop="ItemDrop">
         <GroupBox.Style>
             <Style TargetType="GroupBox">
                 <Style.Triggers>
@@ -278,8 +280,6 @@
         <StackPanel>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" 
                           VerticalScrollBarVisibility="Disabled"
-                          AllowDrop="True"
-                          Drop="ItemDrop"
                           Style="{StaticResource LeftScrollViewer}">
                 <ItemsControl ItemsSource="{Binding PostIts}">
                     <ItemsControl.ItemsPanel>

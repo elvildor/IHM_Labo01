@@ -58,23 +58,51 @@
             </StackPanel.Resources>
 
             <StackPanel Background="Transparent" Orientation="Horizontal">
-                <StackPanel Background="Transparent" Orientation="Vertical" Width="60" VerticalAlignment="Bottom">
-                    <Button Background="#FF5733" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Red}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-                    <Button Background="#FFE500" Command="{Binding AddButton}" HorizontalAlignment="Right" CommandParameter="{StaticResource Yellow}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                <StackPanel Background="Transparent" Orientation="Vertical" Width="80" VerticalAlignment="Bottom">
+                    <Button Background="#FF5733" 
+                            Command="{Binding AddButton}"
+                            HorizontalAlignment="Right"
+                            Width="40"
+                            Height="40"
+                            CommandParameter="{StaticResource Red}"
+                            Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"
+                            Margin="7"/>
+                    <Button Background="#FFE500"
+                            Command="{Binding AddButton}"
+                            HorizontalAlignment="Right"
+                            Width="40"
+                            Height="40"
+                            CommandParameter="{StaticResource Yellow}"
+                            Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"
+                            Margin="7"/>
                 </StackPanel>
 
-                <StackPanel Background="Transparent" Orientation="Vertical" MinWidth="70" MinHeight="70">
-                    <StackPanel Background="Transparent" Orientation="Horizontal" Height="60" >
-                        <Button Background="#85F064" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Green}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
-                        <Button Background="#0094FF" Command="{Binding AddButton}" VerticalAlignment="Bottom" CommandParameter="{StaticResource Blue}" Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"/>
+                <StackPanel Background="Transparent" Orientation="Vertical" MinWidth="110" MinHeight="110">
+                    <StackPanel Background="Transparent" Orientation="Horizontal" Height="80" >
+                        <Button Background="#85F064"
+                                Command="{Binding AddButton}"
+                                VerticalAlignment="Bottom"
+                                Width="40"
+                                Height="40"
+                                CommandParameter="{StaticResource Green}"
+                                Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"
+                            Margin="7"/>
+                        <Button Background="#0094FF"
+                                Command="{Binding AddButton}"
+                                VerticalAlignment="Bottom"
+                                Width="40"
+                                Height="40"
+                                CommandParameter="{StaticResource Blue}"
+                                Visibility="{Binding ButtonVisibility, Converter={StaticResource BoolToVis}}"
+                            Margin="7"/>
                     </StackPanel>
-                    <Button Background="Transparent" Height="60" Width="60" FontSize="42">
+                    <Button Background="Transparent" Height="100" Width="100" FontSize="80">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding MouseClick}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                        <TextBlock Text="+" Margin="0,-8,0,0" FontWeight="Bold"/>
+                        <TextBlock Text="+" Margin="2,-18,0,0" FontWeight="Bold"/>
                     </Button>
                 </StackPanel>
                 
