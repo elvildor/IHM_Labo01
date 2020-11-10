@@ -17,7 +17,7 @@ namespace PostIt.ViewModel
 
             foreach (Model.PostIt postIt in category.PostIts)
             {
-                PostIts.Add(new PostItViewModel(postIt));
+                PostIts.Insert(0, new PostItViewModel(postIt));
             }
             category.PostIts.CollectionChanged += PostItsCollectionChanged;
         }
@@ -29,7 +29,7 @@ namespace PostIt.ViewModel
                 case ChangedAction.Add:
                     foreach (var newItem in e.NewItems)
                     {
-                        PostIts.Add(new PostItViewModel(newItem as Model.PostIt));
+                        PostIts.Insert(0, new PostItViewModel(newItem as Model.PostIt));
                     }
                     break;
                 case ChangedAction.Remove:

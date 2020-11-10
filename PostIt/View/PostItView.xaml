@@ -34,20 +34,7 @@
                     <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="315" ShadowDepth="1"/>
                 </Border.BitmapEffect>
             </Border>-->
-            <TextBox x:Name="Editor"
-                     Text="{Binding Text, Mode=TwoWay}"
-                     Background="Transparent"
-                     Visibility="{Binding IsEditable, Converter={StaticResource BoolToVis}}"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     AcceptsReturn="True"
-                     TextWrapping="Wrap">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="LostFocus">
-                        <i:InvokeCommandAction Command="{Binding LoseFocus}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
+            
             <Polygon Points="0,0 160,0 160,140 140,160 0,160" 
                      Stroke="{Binding Path=LightenColorBrush, Converter={StaticResource ColorToBrush}}" 
                      HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -71,6 +58,23 @@
                     <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="135" ShadowDepth="3"/>
                 </Polygon.BitmapEffect>
             </Polygon>
+            <TextBox x:Name="Editor"
+                     Text="{Binding Text, Mode=TwoWay}"
+                     Background="Transparent"
+                     Visibility="{Binding IsEditable, Converter={StaticResource BoolToVis}}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     BorderThickness="1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding LoseFocus}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
             <Button Visibility="{Binding IsNotEditable, Converter={StaticResource BoolToVis}}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
