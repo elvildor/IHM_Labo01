@@ -6,7 +6,7 @@
         xmlns:v="clr-namespace:PostIt.View"
         mc:Ignorable="d"
         Title="Post-It" 
-        MinHeight="900" MinWidth="700">
+        MinHeight="960" MinWidth="700">
     <Grid>
         <StackPanel Margin="12">
             <ListView ItemsSource="{Binding Categories}"
@@ -28,7 +28,9 @@
                 </ListView.ItemContainerStyle>
 
             </ListView>
+            
         </StackPanel>
-        <ContentPresenter Content="{Binding Commands}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Image Source="{StaticResource Trash}" Opacity="0.8" Height="175" Margin="0,0,0,20" AllowDrop="True" Drop="Image_Drop" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <ContentPresenter Content="{Binding Commands}" Margin="0,0,10,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

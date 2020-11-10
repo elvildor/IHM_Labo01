@@ -14,5 +14,6 @@
     <DataTemplate DataType="{x:Type vm:CommandsViewModel}">
         <v:CommandsView/>
     </DataTemplate>
+    <BitmapImage x:Key="Trash" UriSource="pack://application:,,,/PostIt;component/Ressource/trashcan.png"/>
 
 </ResourceDictionary>

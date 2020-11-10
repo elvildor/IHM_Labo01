@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PostIt.Database;
+using PostIt.View;
+using PostIt.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,19 @@ namespace PostIt
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Image_Drop(object sender, DragEventArgs e)
+        {
+            var data = e.Data.GetData(typeof(PostItView));
+            if (data is PostItView postItView && postItView.DataContext is PostItViewModel context)
+            {
+                if (MessageBox.Show("Êtes-vous sûr ?", "Suppression", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    PostItContext.DeletePostIt(context.Model);
+                }
+            }
+
         }
     }
 }

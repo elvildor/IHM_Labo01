@@ -87,9 +87,9 @@
                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ItemPreviewMouseLeftButtonDown" />
                 </Style>
             </Grid.Resources>
-            <Grid.BitmapEffect>
-                <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="315" ShadowDepth="1"/>
-            </Grid.BitmapEffect>
+            <Grid.Effect>
+                <DropShadowEffect Color="Black" Opacity="0.2" BlurRadius="15" Direction="315" ShadowDepth="6"/>
+            </Grid.Effect>
 
             <Polygon Points="0,0 160,0 160,140 140,160 0,160" 
                      Stroke="{Binding Path=LightenColorBrush, Converter={StaticResource ColorToBrush}}" 
@@ -111,7 +111,7 @@
                     </LinearGradientBrush>
                 </Polygon.Fill>
                 <Polygon.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Opacity="0.6" Direction="135" ShadowDepth="3"/>
+                    <DropShadowBitmapEffect Color="Black" Opacity="0.4" Direction="135" ShadowDepth="3"/>
                 </Polygon.BitmapEffect>
             </Polygon>
             <TextBox x:Name="Editor"
